@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/*
+ * KANGI design tokens.
+ * Existing components use Tailwind's slate / amber / emerald / blue scales, so the
+ * corporate palette is defined by remapping those scales here. Change a value once
+ * and every screen follows.
+ *
+ *   slate   -> ink-tinted neutrals (text, borders, surfaces)
+ *   amber   -> brand blue (primary actions, focus, active states)
+ *   emerald -> confirmed / in stock / profit
+ *   blue    -> same family as the brand, for informational tags
+ *
+ * Warm tones for warnings are kept in the `warn` scale and used explicitly.
+ */
+@theme {
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 600;
+  --font-weight-extrabold: 700;
+  --font-weight-black: 700;
+
+  /* Corners: tight and consistent, panels slightly larger than controls */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-3xl: 8px;
+
+  /* Flat by default. Depth is reserved for things that float (menus, dialogs). */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: 0 1px 1px rgb(11 22 38 / 0.05);
+  --shadow: 0 1px 2px rgb(11 22 38 / 0.08);
+  --shadow-md: 0 2px 4px rgb(11 22 38 / 0.08);
+  --shadow-lg: 0 8px 20px rgb(11 22 38 / 0.14);
+  --shadow-xl: 0 12px 28px rgb(11 22 38 / 0.18);
+  --shadow-2xl: 0 16px 40px rgb(11 22 38 / 0.22);
+
+  /* Neutrals: cool, slightly navy */
+  --color-slate-50: #f6f8fb;
+  --color-slate-100: #edf0f5;
+  --color-slate-200: #dde2ea;
+  --color-slate-300: #c4ccd8;
+  --color-slate-400: #8f9aac;
+  --color-slate-500: #667286;
+  --color-slate-600: #4b566a;
+  --color-slate-700: #364155;
+  --color-slate-800: #212c3f;
+  --color-slate-900: #14202f;
+  --color-slate-950: #0b1523;
+
+  /* Brand blue (mapped onto amber) */
+  --color-amber-50: #eef4fb;
+  --color-amber-100: #dae7f6;
+  --color-amber-200: #b8d0ec;
+  --color-amber-300: #8db1de;
+  --color-amber-400: #5d8dcb;
+  --color-amber-500: #2f6bb3;
+  --color-amber-600: #1f5599;
+  --color-amber-700: #184380;
+  --color-amber-800: #133664;
+  --color-amber-900: #0f2a4f;
+  --color-amber-950: #0a1c37;
+
+  /* Same family for informational blue */
+  --color-blue-50: #eef4fb;
+  --color-blue-100: #dae7f6;
+  --color-blue-200: #b8d0ec;
+  --color-blue-300: #8db1de;
+  --color-blue-400: #5d8dcb;
+  --color-blue-500: #2f6bb3;
+  --color-blue-600: #1f5599;
+  --color-blue-700: #184380;
+  --color-blue-800: #133664;
+  --color-blue-900: #0f2a4f;
+
+  /* Success green, deeper and less minty than the default */
+  --color-emerald-50: #eef6f1;
+  --color-emerald-100: #d8ebe0;
+  --color-emerald-200: #b3d6c1;
+  --color-emerald-300: #82bc9c;
+  --color-emerald-400: #52a17c;
+  --color-emerald-500: #2f8664;
+  --color-emerald-600: #236c50;
+  --color-emerald-700: #1c5741;
+  --color-emerald-800: #164534;
+  --color-emerald-900: #10352a;
+
+  /* Warnings and negatives */
+  --color-red-50: #fdf1f0;
+  --color-red-100: #fbdedb;
+  --color-red-200: #f4bcb6;
+  --color-red-500: #cf3a2c;
+  --color-red-600: #b42a1d;
+  --color-red-700: #941f15;
+  --color-red-800: #741a13;
+  --color-rose-50: #fdf1f0;
+  --color-rose-100: #fbdedb;
+  --color-rose-200: #f4bcb6;
+  --color-rose-400: #dc6a5f;
+  --color-rose-500: #cf3a2c;
+  --color-rose-600: #b42a1d;
+  --color-rose-700: #941f15;
+  --color-rose-800: #741a13;
+  --color-rose-900: #5a150f;
+
+
+  /* Purple / indigo are used for secondary role badges: keep them in the same cool family */
+  --color-purple-50: #f1f4f9;
+  --color-purple-100: #e1e7f1;
+  --color-purple-200: #c4cfe2;
+  --color-purple-300: #9fb0cd;
+  --color-purple-400: #7889ad;
+  --color-purple-500: #5b6d94;
+  --color-purple-600: #465a82;
+  --color-purple-700: #384968;
+  --color-purple-800: #2c3a55;
+  --color-purple-900: #202b41;
+  --color-indigo-50: #f1f4f9;
+  --color-indigo-100: #e1e7f1;
+  --color-indigo-200: #c4cfe2;
+  --color-indigo-300: #9fb0cd;
+  --color-indigo-400: #7889ad;
+  --color-indigo-500: #5b6d94;
+  --color-indigo-600: #465a82;
+  --color-indigo-700: #384968;
+  --color-indigo-800: #2c3a55;
+  --color-indigo-900: #202b41;
+  --color-violet-50: #f1f4f9;
+  --color-violet-100: #e1e7f1;
+  --color-violet-200: #c4cfe2;
+  --color-violet-300: #9fb0cd;
+  --color-violet-400: #7889ad;
+  --color-violet-500: #5b6d94;
+  --color-violet-600: #465a82;
+  --color-violet-700: #384968;
+  --color-violet-800: #2c3a55;
+  --color-violet-900: #202b41;
+
+  --color-warn-50: #fdf6e7;
+  --color-warn-100: #faebc4;
+  --color-warn-600: #a86a0a;
+  --color-warn-800: #6f4506;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-slate-900);
+    background-color: var(--color-slate-100);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.005em;
+  }
+
+  /* Visible keyboard focus everywhere, without changing mouse behaviour */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-amber-500);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-amber-200);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

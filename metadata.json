@@ -1,0 +1,7 @@
+{
+  "name": "KANGI Stock Manager",
+  "description": "Comprehensive stock, sales, purchase cart, supplier, and CRM follow-up management system for electrical, hardware and plumbing businesses in Kenya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
